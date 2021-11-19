@@ -130,3 +130,13 @@
                     this.lessons[lesson].Spaces += 1
                 }
             },
+            computed: {
+                cartItemCount() {
+                    return this.cart.length || ''
+                },
+                showCart() {
+                    return this.cart.length > 0
+                },
+                backtoLessons(){
+                    return this.cart.length == 0
+                },
