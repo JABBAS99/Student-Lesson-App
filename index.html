@@ -140,3 +140,9 @@
                 backtoLessons(){
                     return this.cart.length == 0
                 },
+                validateName() {
+                    return (/^[a-zA-Z]+$/.test(this.order.firstName))
+                },
+                validateNumber() {
+                    return (/^[0-9]+$/.test(this.order.phoneNumber))
+                },
