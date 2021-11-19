@@ -85,3 +85,48 @@
                 phoneNumber: ''
             }
         },
+        methods: {
+                addcart(lesson) {
+                    this.cart.push(lesson.id)
+                    console.log(this.cart)
+                    lesson.Spaces -= 1
+                },
+                showCheckout() {
+                    this.showProduct = this.showProduct ? false : true
+                },
+                canAddToCart(lesson) {
+                    return lesson.Spaces > 0
+                },
+                cartCount(id){
+                    let count = 0
+                    for(let i = 0; i < this.cart.length; i++){  
+                        if(this.cart[i] === id){
+                            count++
+                        }
+                    }
+                    return count
+                },
+                sortPriceByLow() {
+                    function compare(a, b) {
+                        if(a.Price > b.Price) return 1;
+                        if(a.Price < b.Price) return -1;
+                        return 0;
+                    }
+                    return this.lessons.sort(compare);
+                },
+                sortPriceByHigh() {
+                    function compare(a, b) {
+                        if(a.Price > b.Price) return -1;
+                        if(a.Price < b.Price) return 1;
+                        return 0;
+                    }
+                    return this.lessons.sort(compare);
+                },
+                placeOrder() {
+                    alert('Order submitted!!!')
+                },
+                removeFromCart(lesson){
+                    this.cart.pop(this.lessons[lesson])
+                    this.lessons[lesson].Spaces += 1
+                }
+            },
