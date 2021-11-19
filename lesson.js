@@ -45,7 +45,7 @@ let lessons = [
         "Location": "Kilburn",
         "Price": 90,
         "Spaces": 5,
-        "Image": "./images/Geography.jpg"
+        "Image": "/images/Geography.jpg"
 
     },
     {
