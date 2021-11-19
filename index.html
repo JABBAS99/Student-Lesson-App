@@ -146,3 +146,15 @@
                 validateNumber() {
                     return (/^[0-9]+$/.test(this.order.phoneNumber))
                 },
+                filteredLessons: function(){
+                    return this.lessons.filter((lesson) => {
+                        return lesson.Subject.toLowerCase().match(this.search.toLowerCase()) ||
+                        lesson.Location.toLowerCase().match(this.search.toLowerCase()) ||
+                        lesson.Price.toString().match(this.search.toString())
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
