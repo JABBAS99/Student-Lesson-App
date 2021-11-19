@@ -34,3 +34,41 @@
                 <br>-
         </div>
     </div>
+    <div v-else class="text-center">
+        <div v-show="backtoLessons">
+            <button class="btn btn-secondary" v-on:click='showCheckout'>{{cartItemCount}} <span><i class="fas fa-arrow-left"></i></span> Back To Lessons</button>
+        </div>
+        <h1>Checkout</h1>
+
+        <h1>Lessons in basket</h1>
+
+        <div v-for="lesson in cart" >
+            <img v-bind:src="lessons[lesson].Image" height="200px" width="200px">
+            <h3>{{ lessons[lesson].Subject }}</h3>
+            <h3>{{ lessons[lesson].Location }}</h3>
+            <h3>£{{ lessons[lesson].Price }}</h3>
+            <button class="btn btn-danger" @click="removeFromCart(lesson)"><i class="fa fa-trash"></i> Delete</button>
+            <br>
+            <br>
+        </div>
+
+        <h1>Checkout</h1>
+        <p>
+            <strong>First Name:</strong>
+            <input class="form-control" v-model='order.firstName'>
+        </p>
+        <p>
+            <strong>Phone Number:</strong>
+            <input class="form-control" v-model='order.phoneNumber'>
+        </p>
+        <div v-show="!validateName || !validateNumber">
+            <p>Error: Please make sure name is only letters and Phone is only numbers</p>
+        </div>
+        <h3>Order information</h3>
+        <p>First name: {{order.firstName}}</p>
+        <p>Phone Number: {{order.phoneNumber}}</p>
+        <div v-show="validateNumber && validateName">
+            <button class="btn btn-success" v-on:click='placeOrder'>Place Order</button>
+        </div>
+    </div>
+</div>
